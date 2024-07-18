@@ -27,18 +27,6 @@ export default class Youtube {
     )
   }
 
-  async searchByChannelId(channelId){
-    return this.apiClient.playlist({
-      params:{
-        part: 'snippet',
-        maxResults: 25,
-        type:'video',
-        channelId,
-      },
-    })
-    .then((res) => res.data.items);
-  }
-
   async #searchByKeyword(keyword) {
     return this.apiClient
       .search({

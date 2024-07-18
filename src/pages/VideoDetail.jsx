@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import ChannelInfo from '../components/ChannelInfo';
 import RelatedVideos from '../components/RelatedVideos';
 
+
 export default function VideoDetail() {
   const {state: {video},} = useLocation();
   const {title, channelId, channelTitle, description} = video.snippet;
@@ -25,7 +26,7 @@ export default function VideoDetail() {
         </div>
       </article>
       <section className='basis-2/6'>
-        <RelatedVideos id={channelId.id} />
+        <RelatedVideos id={video.id} />
       </section>
     </section>
   )
