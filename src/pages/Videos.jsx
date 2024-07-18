@@ -5,7 +5,7 @@ import VideoCard from '../components/VideoCard';
 import { useYoutubeApi } from '../context/YoutubeApiContext';
 
 export default function Videos() {
-  const {keyword} = useParams();
+  const { keyword } = useParams();
   const { youtube } = useYoutubeApi();
   const {
     isLoading,
@@ -13,12 +13,9 @@ export default function Videos() {
     data: videos,
   } = useQuery({
     queryKey:['videos', keyword], 
-    queryFn:() => youtube.search(keyword),
-    staleTime: 1000 * 60 * 1
-  });
-  
+    queryFn:() => youtube.search(keyword)});
   return (
-    <>
+    <>      
       {isLoading && <p>Loading...</p>}
       {error && <p>Something is wrong</p>}
       {videos && (
@@ -28,6 +25,6 @@ export default function Videos() {
           ))}
         </ul>
       )}
-    </>
-  )
+    </>    
+  );
 }
